@@ -1,9 +1,6 @@
 # _Metrics_
 
-#### By _**Brandon Wright**_
-        _**Brian Yoder**_
-        _**Sean Norwood**_
-        _**Julien Lenaz**_
+#### By _**Brandon Wright**_, _**Brian Yoder**_, _**Sean Norwood**_, and _**Julien Lenaz**_
 
 #### _An application for tracking support team metrics_
 
