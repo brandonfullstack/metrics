@@ -59,7 +59,7 @@ for (let i = 0; i < metrics.length; i++) {
       input.type = "number";
       input.min = 0;
       input.classList.add("form-control");
-      input.id = "exampleFormControlInput1";
+      input.id = `${applications[j]}-${metrics[i]}`;
       input.placeholder = "";
       input.tabIndex = i + (metrics.length * j);
       td.appendChild(input);
