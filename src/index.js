@@ -27,6 +27,8 @@ function createForm() {
     "Voicemail"
   ];
 
+  const formDiv = document.getElementById("metrics");
+
   const table = document.createElement("table");
   table.classList.add("table");
 
@@ -70,7 +72,9 @@ function createForm() {
 
     table.appendChild(row);
   }
-  document.body.appendChild(table);
+
+  formDiv.appendChild(table);
+
 }
 
 // function handleFormSubmission(e) {
