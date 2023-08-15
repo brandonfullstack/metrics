@@ -1,0 +1,24 @@
+body {
+  background-color: #2b2b2b;
+  color: rgb(38, 219, 222);
+}
+
+.container {
+  background-color: #15151575;
+  width: fit-content;
+  height: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  margin: 20px;
+}
+
+.app-table,
+td {
+  padding-right: 20px;
+  padding-bottom: 5px;
+}
+/* .borderless td,
+.borderless th {
+  border: none;
+} */
