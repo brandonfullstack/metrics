@@ -1,40 +1,79 @@
 <!DOCTYPE html>
 <html lang="en-US">
+  <head>
+    <title>metrics</title>
+  </head>
 
-<head>
-  <title>metrics</title>
-</head>
-
-<body class="text-center" class="text-nowrap text-end p-3">
-  <h1>metrics</h1>
-  <form id='theForm'>
-    <h4>Select application(s)</h4>
-    <input type="checkbox" id="CAREWare" name="applications" value="CAREWare">
-    <label for="CAREWare">CAREWare</label>
-    <input type="checkbox" id="AIMS2.0" name="applications" value="AIMS2.0">
-    <label for="AIMS2.0">AIMS2.0</label>
-    <input type="checkbox" id="CTLS" name="applications" value="CTLS">
-    <label for="CTLS">CTLS</label>
-    <input type="checkbox" id="HIVD2C" name="applications" value="HIVD2C">
-    <label for="HIVD2C">HIVD2C</label>
-    <input type="checkbox" id="STARS" name="applications" value="STARS">
-    <label for="STARS">STARS</label>
-    <input type="checkbox" id="PCEligibilty" name="applications" value="PCEligibilty">
-    <label for="PCEligibilty">PCEligibilty</label>
-    <input type="checkbox" id="TOPWA" name="applications" value="TOPWA">
-    <label for="TOPWA">TOPWA</label>
-    <input type="checkbox" id="ELR" name="applications" value="ELR">
-    <label for="ELR">ELR</label>
-    <input type="checkbox" id="PCFMRS" name="applications" value="PCFMRS">
-    <label for="PCFMRS">PCFMRS</label>
-    <input type="checkbox" id="MOVEit" name="applications" value="MOVEit">
-    <label for="MOVEit">MOVEit</label>
-    <br>
-    <br>
-    <br>
-  </form>
-</body>
-
+  <body class="text-center" class="text-nowrap text-end p-3">
+    <form id="theForm">
+      <div class="app-container">
+        <form id="theForm">
+          <h4>Select application(s)</h4>
+          <table class="app-table">
+            <tr>
+              <td>
+                <input type="checkbox" id="CAREWare" name="applications" value="CAREWare" />
+                <label for="CAREWare">CAREWare</label>
+              </td>
+              <td>
+                <input type="checkbox" id="AIMS2.0" name="applications" value="AIMS2.0" />
+                <label for="AIMS2.0">AIMS2.0</label>
+              </td>
+              <td>
+                <input type="checkbox" id="CTLS" name="applications" value="CTLS" />
+                <label for="CTLS">CTLS</label>
+              </td>
+              <td>
+                <input type="checkbox" id="HIVD2C" name="applications" value="HIVD2C" />
+                <label for="HIVD2C">HIVD2C</label>
+              </td>
+              <td>
+                <input type="checkbox" id="STARS" name="applications" value="STARS" />
+                <label for="STARS">STARS</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" id="PCEligibilty" name="applications" value="PCEligibilty" />
+                <label for="PCEligibilty">PCEligibilty</label>
+              </td>
+              <td>
+                <input type="checkbox" id="TOPWA" name="applications" value="TOPWA" />
+                <label for="TOPWA">TOPWA</label>
+              </td>
+              <td>
+                <input type="checkbox" id="ELR" name="applications" value="ELR" />
+                <label for="ELR">ELR</label>
+              </td>
+              <td>
+                <input type="checkbox" id="PCFMRS" name="applications" value="PCFMRS" />
+                <label for="PCFMRS">PCFMRS</label>
+              </td>
+              <td>
+                <input type="checkbox" id="MOVEit" name="applications" value="MOVEit" />
+                <label for="MOVEit">MOVEit</label>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <table class="table" class="table">
+        <thead>
+          <h1>metrics</h1>
+        </thead>
+        <tbody class="" id="apps">
+          <!-- <tr>
+            <th></th>
+            <th>CAREWare</th>
+            <th>AIMS2.0</th>
+            <th>PCFMRS</th>
+            <th>MOVEit</th>
+          </tr> -->
+        </tbody>
+      </table>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
 </html>
 
 <!--Data {
