@@ -3,7 +3,7 @@ body {
   color: rgb(38, 219, 222);
 }
 
-.container {
+.app-container {
   background-color: #15151575;
   width: fit-content;
   height: fit-content;
