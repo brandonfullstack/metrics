@@ -1,30 +1,29 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: "./dist",
+    // hot: true,
   },
-  devtool: 'eval-source-map',
+  devtool: "eval-source-map",
   plugins: [
-    new ESLintPlugin(),
     new CleanWebpackPlugin({
-      verbose: true
+      verbose: true,
     }),
     new HtmlWebpackPlugin({
-      title: 'Metrics', // Add project name here.
-      template: './src/index.html',
-      inject: 'body'
+      title: "Metrics", // Add project name here.
+      template: "./src/index.html",
+      inject: "body",
     }),
-    new Dotenv()
+    new Dotenv(),
   ],
   module: {
     rules: [
@@ -32,27 +31,22 @@ module.exports = {
         test: /\.(gif|png|avif|jpe?g)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: '[name].[ext]',
-              outputPath: 'assets/images/'
-            }
-          }
-        ]
+              name: "[name].[ext]",
+              outputPath: "assets/images/",
+            },
+          },
+        ],
       },
       {
         test: /\.html$/,
-        use: [
-          'html-loader'
-        ]
+        use: ["html-loader"],
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      }
-    ]
-  }
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
 };
