@@ -2,6 +2,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 
+//creates a table out of applications and metrics array
 function createForm() {
   const applications = [
     "CAREWare",
@@ -26,13 +27,17 @@ function createForm() {
     "Support Tickets Completed",
     "Voicemail"
   ];
+  const submitButton = document.createElement("button");
+  submitButton.type = "submit";
+  submitButton.classList.add("btn", "btn-primary");
+  submitButton.textContent = "Submit";
 
   const formDiv = document.getElementById("metrics");
 
   const table = document.createElement("table");
   table.classList.add("table");
 
-  for (let i = 0; i < metrics.length; i++) {
+  metrics.forEach((metric, i) => {
     const row = document.createElement("tr");
 
     if (i === 0) {
@@ -41,46 +46,47 @@ function createForm() {
       row.appendChild(th);
 
       // Create header cells for applications
-      for (let j = 0; j < applications.length; j++) {
+      applications.forEach((application) => {
         const th = document.createElement("th");
-        th.textContent = applications[j];
+        th.textContent = application;
         row.appendChild(th);
-      }
+      });
     } else {
       // Create metric label cell
       const th = document.createElement("th");
 
       th.classList.add("text-nowrap", "text-end", "p-3");
-      th.textContent = metrics[i];
+      th.textContent = metric;
       row.appendChild(th);
 
       // Create input cells for metrics
-      for (let j = 0; j < applications.length; j++) {
+      applications.forEach((application, j) => {
         const td = document.createElement("td");
         const input = document.createElement("input");
 
         input.type = "number";
         input.min = 0;
         input.classList.add("form-control");
-        input.id = `${applications[j]}-${metrics[i]}`;
+        input.id = `${application}-${metric}`;
         input.placeholder = "";
-        input.tabIndex = i + (metrics.length * j);
+        input.tabIndex = i + metrics.length * j;
         td.appendChild(input);
         row.appendChild(td);
-      }
+      });
     }
 
     table.appendChild(row);
-  }
+  });
 
   formDiv.appendChild(table);
-
+  formDiv.appendChild(submitButton);
 }
 
-// function handleFormSubmission(e) {
-//   e.preventDefault();
-// }
-window.addEventListener("load", function() {
+function handleFormSubmission(e) {
+  e.preventDefault();
+  console.log(e);
+ }
+window.addEventListener("load", function () {
   createForm();
-  // document.querySelector("form").addEventListener("submit", handleFormSubmission);
+   document.querySelector("form").addEventListener("submit", handleFormSubmission);
 });
