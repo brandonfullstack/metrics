@@ -3,4 +3,3 @@ node_modules/
 dist/
 coverage/
 .env
-src/css/styles.css
