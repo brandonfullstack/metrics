@@ -1,3 +1,4 @@
+import "./css/styles.css";
 import "./css/global.css";
 
 const applications = [
