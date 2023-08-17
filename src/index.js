@@ -78,6 +78,22 @@ for (const key in metrics) {
   renderTableColumn(element, key);
 }
 
+// UI Logic
+
+document.querySelector("form").addEventListener("click", function() {
+
+  let firstButton = document.getElementById("1stButton");
+  let ariaExpanded = firstButton.getAttribute("aria-expanded");
+
+  if ((ariaExpanded === "true")
+   ) {
+    firstButton.click()
+  }
+});
+
+
+
+
 // metrics.forEach((metric) => {
 //   renderTableColumn(metric);
 // });
