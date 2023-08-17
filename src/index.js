@@ -48,7 +48,7 @@ function renderTableColumn(text, id) {
   const tableHeader = document.createElement("th");
 
   tableRow.classList.add("borderless");
-  tableHeader.classList.add("text-nowrap", "text-end", "p-3");
+  tableHeader.classList.add("text-end");
   tableHeader.textContent = text;
 
   tableRow.appendChild(tableHeader);

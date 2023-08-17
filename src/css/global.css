@@ -19,6 +19,10 @@ h1 {
   margin: 0 auto;
 }
 
+th.text-end {
+  text-align: right;
+}
+
 .table {
   position: relative;
   margin: 0 auto;
