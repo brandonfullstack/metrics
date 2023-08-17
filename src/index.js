@@ -1,7 +1,8 @@
-import "./css/styles.css";
+// import "./css/styles.css";
 import "./css/global.css";
 
 const applications = [
+  "",
   "CAREWare",
   "AIMS2.0",
   // "CTLS",
@@ -33,6 +34,15 @@ formEl.addEventListener("submit", (event) => {
 });
 const tableEl = document.getElementById("apps");
 
+const headerRow = document.createElement("tr");
+for (let j = 0; j < applications.length; j++) {
+  const th = document.createElement("th");
+  th.textContent = applications[j];
+  headerRow.appendChild(th);
+}
+
+tableEl.appendChild(headerRow);
+
 function renderTableColumn(text, id) {
   const tableRow = document.createElement("tr");
   const tableHeader = document.createElement("th");
@@ -43,7 +53,8 @@ function renderTableColumn(text, id) {
 
   tableRow.appendChild(tableHeader);
 
-  applications.forEach((app) => {
+
+  applications.slice(1).forEach((app) => {
     const tableData = document.createElement("td");
     const input = document.createElement("input");
 
@@ -61,14 +72,39 @@ function renderTableColumn(text, id) {
   tableEl.appendChild(tableRow);
 }
 
-// metrics.forEach((metric) => {
-//   renderTableColumn(metric);
-// });
-
 for (const key in metrics) {
   const element = metrics[key];
   renderTableColumn(element, key);
 }
+
+// metrics.forEach((metric) => {
+//   renderTableColumn(metric);
+// });
+
+
+
+  
+  // tableEl.appendChild(tableRow);
+
+
+// function addTableHeaders(headers) {
+//   headers.forEach((header) => {
+//     header = 
+//     const th = document.createElement('th');
+//     th.classList.add('py-2', 'px-4', 'font-bold', 'bg-gray-200');
+//     th.textContent = header;
+//     tr.appendChild(th);
+//   });
+
+//   thead.appendChild(tr);
+//   table.appendChild(thead);
+// }
+
+// for (const key in metrics) {
+//   const elementHeader = applications[key];
+//   addTableHeaders(elementHeader, key);
+// }
+
 
 // const table = document.createElement("table");
 // table.classList.add("table");
@@ -76,17 +112,14 @@ for (const key in metrics) {
 // for (let i = 0; i < metrics.length; i++) {
 //   const row = document.createElement("tr");
 
-//   if (i === 0) {
-//     // Create empty cell for the top-left corner
-//     const th = document.createElement("th");
-//     row.appendChild(th);
+
 
 //     // Create header cells for applications
-//     for (let j = 0; j < applications.length; j++) {
-//       const th = document.createElement("th");
-//       th.textContent = applications[j];
-//       row.appendChild(th);
-//     }
+    // for (let j = 0; j < applications.length; j++) {
+    //   const th = document.createElement("th");
+    //   th.textContent = applications[j];
+    //   row.appendChild(th);
+    // }
 //   } else {
 //     // Create metric label cell
 //     const th = document.createElement("th");
