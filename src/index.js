@@ -1,7 +1,7 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./css/styles.css";
-//import Chart from 'chart.js/auto';
+import Chart from 'chart.js/auto';
 
 const applications = [
   "",
@@ -93,9 +93,36 @@ function gatherFormData() {
       }
     }
   });
-
   return formData;
 }
+
+// function createChart() {
+//   const data = [
+//     { year: 2010, count: 10 },
+//     { year: 2011, count: 20 },
+//     { year: 2012, count: 15 },
+//     { year: 2013, count: 25 },
+//     { year: 2014, count: 22 },
+//     { year: 2015, count: 30 },
+//     { year: 2016, count: 28 },
+//   ];
+
+//   new Chart(
+//     document.getElementById('chart'),
+//     {
+//       type: 'bar',
+//       data: {
+//         labels: data.map(row => row.year),
+//         datasets: [
+//           {
+//             label: 'Acquisitions by year',
+//             data: data.map(row => row.count)
+//           }
+//         ]
+//       }
+//     }
+//   );
+// }
 
 window.addEventListener("load", initializeTable);
 
@@ -103,6 +130,7 @@ document.getElementById("theForm").addEventListener("submit", function(e) {
   e.preventDefault();
   const formData = gatherFormData();
   console.log(formData);
+  // createChart();
 });
 
 document.querySelector("form").addEventListener("click", function() {
