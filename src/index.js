@@ -28,7 +28,6 @@ const metrics = {
   voicemail: "Voicemail",
 };
 
-
 const tableEl = document.getElementById("apps");
 
 function createTableHeaderRow() {
@@ -60,16 +59,14 @@ function renderTableColumn(text, id) {
 
     input.type = "number";
     input.min = 0;
-    input.value = 0;
+    input.placeholder = "";
     input.classList.add("form-control");
     input.id = `${id}-${app}`;
     input.name = `${id}-${app}`;
-    input.placeholder = "";
-    input.tabIndex = `${applications.indexOf(app)}`
+    input.tabIndex = `${applications.indexOf(app)}`;
   });
 
   tableEl.appendChild(tableRow);
-
 }
 
 function initializeTable() {
@@ -100,15 +97,12 @@ function gatherFormData() {
   return formData;
 }
 
-
-
 window.addEventListener("load", initializeTable);
 
 document.getElementById("theForm").addEventListener("submit", function(e) {
   e.preventDefault();
   const formData = gatherFormData();
   console.log(formData);
-  renderChart();
 });
 
 document.querySelector("form").addEventListener("click", function() {
