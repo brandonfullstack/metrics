@@ -64,12 +64,9 @@ function renderTableColumn(text, id) {
     input.classList.add("form-control");
     input.id = `${id}-${app}`;
     input.name = `${id}-${app}`;
-<<<<<<< HEAD
     input.tabIndex = `${applications.indexOf(app)}`;
-=======
     input.placeholder = "";
     // input.tabIndex = i + (metrics.length * j);
->>>>>>> ebb5e1dbe97f4058a3283bf9ea106dd5887d52c8
   });
 
   tableEl.appendChild(tableRow);
