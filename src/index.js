@@ -1,6 +1,7 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./css/styles.css";
+import Chart from 'chart.js/auto';
 
 const applications = [
   "",
@@ -115,4 +116,7 @@ document.querySelector("form").addEventListener("click", function() {
     firstButton.click()
   }
 });
+
+
+
 
