@@ -27,12 +27,6 @@ const metrics = {
   voicemail: "Voicemail",
 };
 
-// const formEl = document.getElementById("theForm");
-
-// formEl.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   console.log(event.target.elements[0].value);
-// });
 
 const tableEl = document.getElementById("apps");
 
@@ -83,8 +77,33 @@ function initializeTable() {
   }
 }
 
+function gatherFormData() {
+  const formData = {};
+
+  applications.slice(1).forEach((app) => {
+    formData[app] = {};
+
+    for (const key in metrics) {
+      const inputId = `${key}-${app}`;
+      const inputElement = document.getElementById(inputId);
+      if (inputElement) {
+        const inputValue = parseInt(inputElement.value, 10);
+        formData[app][key] = inputValue;
+      }
+    }
+  });
+
+  return formData;
+}
+
 
 window.addEventListener("load", initializeTable);
+
+document.getElementById("theForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const formData = gatherFormData();
+  console.log(formData);
+});
 
 document.querySelector("form").addEventListener("click", function() {
 
@@ -96,3 +115,4 @@ document.querySelector("form").addEventListener("click", function() {
     firstButton.click()
   }
 });
+
