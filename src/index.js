@@ -56,6 +56,7 @@ function renderTableColumn(text, id) {
 
 
   applications.slice(1).forEach((app) => {
+    // let j = 0; j < applications.length; j++
     const tableData = document.createElement("td");
     const input = document.createElement("input");
 
@@ -68,6 +69,7 @@ function renderTableColumn(text, id) {
     input.id = `${id}-${app}`;
     input.name = `${id}-${app}`;
     input.placeholder = "";
+    // input.tabIndex = i + (metrics.length * j);
   });
 
   tableEl.appendChild(tableRow);
