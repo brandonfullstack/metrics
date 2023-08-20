@@ -1,7 +1,7 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./css/styles.css";
-import Chart from 'chart.js/auto';
+//import Chart from 'chart.js/auto';
 
 const applications = [
   "",
@@ -64,9 +64,11 @@ function renderTableColumn(text, id) {
     input.id = `${id}-${app}`;
     input.name = `${id}-${app}`;
     input.placeholder = "";
+    input.tabIndex = `${applications.indexOf(app)}`
   });
 
   tableEl.appendChild(tableRow);
+
 }
 
 function initializeTable() {
@@ -98,12 +100,14 @@ function gatherFormData() {
 }
 
 
+
 window.addEventListener("load", initializeTable);
 
 document.getElementById("theForm").addEventListener("submit", function(e) {
   e.preventDefault();
   const formData = gatherFormData();
   console.log(formData);
+  renderChart();
 });
 
 document.querySelector("form").addEventListener("click", function() {
