@@ -51,6 +51,7 @@ function renderTableColumn(text, id) {
   tableRow.appendChild(tableHeader);
 
   applications.slice(1).forEach((app) => {
+    // let j = 0; j < applications.length; j++
     const tableData = document.createElement("td");
     const input = document.createElement("input");
 
@@ -63,7 +64,12 @@ function renderTableColumn(text, id) {
     input.classList.add("form-control");
     input.id = `${id}-${app}`;
     input.name = `${id}-${app}`;
+<<<<<<< HEAD
     input.tabIndex = `${applications.indexOf(app)}`;
+=======
+    input.placeholder = "";
+    // input.tabIndex = i + (metrics.length * j);
+>>>>>>> ebb5e1dbe97f4058a3283bf9ea106dd5887d52c8
   });
 
   tableEl.appendChild(tableRow);

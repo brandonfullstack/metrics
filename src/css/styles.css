@@ -1,6 +1,7 @@
 body {
   background-color: #2b2b2b;
   color: rgb(38, 219, 222);
+  margin: 100px;
 }
 
 h1 {
@@ -31,11 +32,18 @@ h1 {
   margin: 0 auto;
 }
 
+.accordion-button {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /* th.text-end {
   text-align: right;
 } */
 
-.table {
+.table{
   position: relative;
   margin: 0 auto;
 }
