@@ -60,6 +60,7 @@ function renderTableColumn(text, id) {
 
     input.type = "number";
     input.min = 0;
+    input.value = 0;
     input.classList.add("form-control");
     input.id = `${id}-${app}`;
     input.name = `${id}-${app}`;
