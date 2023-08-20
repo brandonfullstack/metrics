@@ -1,6 +1,7 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./css/styles.css";
+import Chart from 'chart.js/auto';
 
 const applications = [
   "",
@@ -27,7 +28,6 @@ const metrics = {
   voicemail: "Voicemail",
 };
 
-
 const tableEl = document.getElementById("apps");
 
 function createTableHeaderRow() {
@@ -51,7 +51,6 @@ function renderTableColumn(text, id) {
   tableRow.appendChild(tableHeader);
 
   applications.slice(1).forEach((app) => {
-    // let j = 0; j < applications.length; j++
     const tableData = document.createElement("td");
     const input = document.createElement("input");
 
@@ -60,13 +59,13 @@ function renderTableColumn(text, id) {
 
     input.type = "number";
     input.min = 0;
+    input.placeholder = "";
     input.classList.add("form-control");
     input.id = `${id}-${app}`;
     input.name = `${id}-${app}`;
+    input.tabIndex = `${applications.indexOf(app)}`;
     input.placeholder = "";
-    // input.tabIndex = i + (metrics.length * j);
   });
-
   tableEl.appendChild(tableRow);
 }
 
@@ -94,10 +93,36 @@ function gatherFormData() {
       }
     }
   });
-
   return formData;
 }
 
+// function createChart() {
+//   const data = [
+//     { year: 2010, count: 10 },
+//     { year: 2011, count: 20 },
+//     { year: 2012, count: 15 },
+//     { year: 2013, count: 25 },
+//     { year: 2014, count: 22 },
+//     { year: 2015, count: 30 },
+//     { year: 2016, count: 28 },
+//   ];
+
+//   new Chart(
+//     document.getElementById('chart'),
+//     {
+//       type: 'bar',
+//       data: {
+//         labels: data.map(row => row.year),
+//         datasets: [
+//           {
+//             label: 'Acquisitions by year',
+//             data: data.map(row => row.count)
+//           }
+//         ]
+//       }
+//     }
+//   );
+// }
 
 window.addEventListener("load", initializeTable);
 
@@ -105,6 +130,7 @@ document.getElementById("theForm").addEventListener("submit", function(e) {
   e.preventDefault();
   const formData = gatherFormData();
   console.log(formData);
+  // createChart();
 });
 
 document.querySelector("form").addEventListener("click", function() {
@@ -117,4 +143,7 @@ document.querySelector("form").addEventListener("click", function() {
     firstButton.click()
   }
 });
+
+
+
 
