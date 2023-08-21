@@ -1,7 +1,7 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./css/styles.css";
-import Chart from 'chart.js/auto';
+// import Chart from 'chart.js/auto';
 
 const applications = [
   "",
