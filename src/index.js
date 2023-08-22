@@ -1,7 +1,7 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./css/styles.css";
-// import Chart from 'chart.js/auto';
+import Chart from '.././node_modules/chart.js';
 
 const applications = [
   "",
@@ -96,33 +96,34 @@ function gatherFormData() {
   return formData;
 }
 
-// function createChart() {
-//   const data = [
-//     { year: 2010, count: 10 },
-//     { year: 2011, count: 20 },
-//     { year: 2012, count: 15 },
-//     { year: 2013, count: 25 },
-//     { year: 2014, count: 22 },
-//     { year: 2015, count: 30 },
-//     { year: 2016, count: 28 },
-//   ];
+function createChart(data) {
+  const dataContainer = document.getElementById('data');
 
-//   new Chart(
-//     document.getElementById('chart'),
-//     {
-//       type: 'bar',
-//       data: {
-//         labels: data.map(row => row.year),
-//         datasets: [
-//           {
-//             label: 'Acquisitions by year',
-//             data: data.map(row => row.count)
-//           }
-//         ]
-//       }
-//     }
-//   );
-// }
+  for (const softwareName in data) {
+    const softwareData = data[softwareName];
+    const canvasId = `${softwareName}-chart`;
+
+    const canvasElement = document.createElement('canvas');
+    canvasElement.id = canvasId;
+    dataContainer.appendChild(canvasElement);
+
+    new Chart(
+      canvasElement,
+      {
+        type: 'bar',
+        data: {
+          labels: Object.keys(softwareData),
+          datasets: [
+            {
+              label: `${softwareName} Metrics`,
+              data: Object.values(softwareData)
+            }
+          ]
+        }
+      }
+    );
+  }
+}
 
 window.addEventListener("load", initializeTable);
 
@@ -130,7 +131,7 @@ document.getElementById("theForm").addEventListener("submit", function(e) {
   e.preventDefault();
   const formData = gatherFormData();
   console.log(formData);
-  // createChart();
+  createChart(formData);
 });
 
 document.querySelector("form").addEventListener("click", function() {
