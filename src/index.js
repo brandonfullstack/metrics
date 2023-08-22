@@ -137,6 +137,7 @@ function createChart(data) {
 window.addEventListener("load", initializeTable);
 
 document.getElementById("theForm").addEventListener("submit", function (e) {
+  document.getElementById("data").innerHTML = "";
   e.preventDefault();
   const formData = gatherFormData();
   console.log(formData);
