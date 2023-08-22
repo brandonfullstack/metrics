@@ -121,13 +121,20 @@ function createChart(data) {
           ]
         },
         options: {
-          aspectRatio: 1,
+          aspectRatio: 6,
           scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    color: 'white'
                 }
             }]
+        },
+        legend: {
+          labels: {
+            fontColor: 'white',
+            fontSize: 18
+          },
         }
       },
     });
