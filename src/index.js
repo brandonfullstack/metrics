@@ -7,11 +7,11 @@ const applications = [
   "",
   "CAREWare",
   "AIMS2.0",
-  // "CTLS",
-  // "HIVD2C",
-  // "STARS",
-  // "PCEligibilty",
-  // "TOPWA",
+  "CTLS",
+  "HIVD2C",
+  "STARS",
+  "PCEligibilty",
+  "TOPWA",
   "ELR",
   "PCFMRS",
   "MOVEit",
@@ -144,7 +144,3 @@ document.querySelector("form").addEventListener("click", function() {
     firstButton.click()
   }
 });
-
-
-
-
