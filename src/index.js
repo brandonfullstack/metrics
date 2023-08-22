@@ -119,9 +119,18 @@ function createChart(data) {
               data: Object.values(softwareData)
             }
           ]
+        },
+        options: {
+          aspectRatio: 1,
+          scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
         }
-      }
-    );
+      },
+    });
   }
 }
 
