@@ -136,23 +136,33 @@ function createChart(data) {
 
 window.addEventListener("load", initializeTable);
 
-document.getElementById("theForm").addEventListener("submit", function(e) {
+document.getElementById("theForm").addEventListener("submit", function (e) {
   e.preventDefault();
   const formData = gatherFormData();
   console.log(formData);
   createChart(formData);
 });
 
-document.querySelector("form").addEventListener("click", function() {
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
 
-  let firstButton = document.getElementById("1stButton");
-  let ariaExpanded = firstButton.getAttribute("aria-expanded");
+  nextBtn.addEventListener("click", function () {
+    initializeTable() 
+  });
+  prevBtn.addEventListener("click", function () {
+    initializeTable() 
+  })
 
-  if ((ariaExpanded === "true")
-   ) {
-    firstButton.click()
-  }
-});
+  document.querySelector("form").addEventListener("click", function () {
+
+    let firstButton = document.getElementById("1stButton");
+    let ariaExpanded = firstButton.getAttribute("aria-expanded");
+
+    if ((ariaExpanded === "true")
+    ) {
+      firstButton.click()
+    }
+  });
 
 
 
