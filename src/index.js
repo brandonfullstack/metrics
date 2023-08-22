@@ -30,6 +30,8 @@ const metrics = {
 
 const tableEl = document.getElementById("apps");
 
+const checkboxes = document.querySelectorAll('input[name="applications"]');
+
 function createTableHeaderRow() {
   const headerRow = document.createElement("tr");
   for (const app of applications) {
@@ -125,6 +127,20 @@ function createChart(data) {
   }
 }
 
+function updateTable() {
+  
+  tableEl.innerHTML = '';
+
+  createTableHeaderRow();
+
+  checkboxes.forEach((checkbox, index) => {
+    if (checkbox.checked) {
+      const appName = applications[index];
+      renderTableColumn(appName, index);
+    }
+  });
+}
+
 window.addEventListener("load", initializeTable);
 
 document.getElementById("theForm").addEventListener("submit", function(e) {
@@ -135,12 +151,15 @@ document.getElementById("theForm").addEventListener("submit", function(e) {
 });
 
 document.querySelector("form").addEventListener("click", function() {
-
   let firstButton = document.getElementById("1stButton");
   let ariaExpanded = firstButton.getAttribute("aria-expanded");
 
-  if ((ariaExpanded === "true")
-   ) {
-    firstButton.click()
+  if (ariaExpanded === "true") {
+    firstButton.click();
   }
+});
+
+
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener('change', updateTable);
 });
