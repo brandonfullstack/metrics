@@ -112,7 +112,7 @@ function createChart(data) {
       {
         type: 'bar',
         data: {
-          labels: Object.keys(softwareData),
+          labels: Object.values(metrics),
           datasets: [
             {
               label: `${softwareName} Metrics`,
@@ -154,15 +154,7 @@ document.getElementById("theForm").addEventListener("submit", function (e) {
   createChart(formData);
 });
 
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
 
-  nextBtn.addEventListener("click", function () {
-    initializeTable() 
-  });
-  prevBtn.addEventListener("click", function () {
-    initializeTable() 
-  })
 
   document.querySelector("form").addEventListener("click", function () {
 
