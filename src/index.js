@@ -3,20 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./css/styles.css";
 import Chart from '.././node_modules/chart.js';
 
-const applications = [
-  "",
-  "CAREWare",
-  "AIMS2.0",
-  // "CTLS",
-  // "HIVD2C",
-  // "STARS",
-  // "PCEligibilty",
-  // "TOPWA",
-  "ELR",
-  "PCFMRS",
-  "MOVEit",
-];
-
 const metrics = {
   calls_made: "Calls Made",
   calls_received: "Calls Received",
@@ -29,28 +15,32 @@ const metrics = {
 };
 
 const tableEl = document.getElementById("apps");
+const checkboxes = document.querySelectorAll('input[name="applications"]');
+const dataContainer = document.getElementById('data');
 
-function createTableHeaderRow() {
+function createTableHeaderRow(selectedApps) {
   const headerRow = document.createElement("tr");
-  for (const app of applications) {
+  const emptyHeader = document.createElement("th");
+
+  headerRow.appendChild(emptyHeader); 
+
+  for (const app of selectedApps) {
     const th = document.createElement("th");
     th.textContent = app;
     headerRow.appendChild(th);
   }
+
   tableEl.appendChild(headerRow);
 }
 
-function renderTableColumn(text, id) {
+
+function renderTableColumn(selectedApps, metricKey) {
   const tableRow = document.createElement("tr");
-  const tableHeader = document.createElement("th");
+  const metricCell = document.createElement("td");
+  metricCell.textContent = metrics[metricKey];
+  tableRow.appendChild(metricCell);
 
-  tableRow.classList.add("borderless");
-  tableHeader.classList.add("text-end");
-  tableHeader.textContent = text;
-
-  tableRow.appendChild(tableHeader);
-
-  applications.slice(1).forEach((app) => {
+  selectedApps.forEach((app) => {
     const tableData = document.createElement("td");
     const input = document.createElement("input");
 
@@ -61,27 +51,36 @@ function renderTableColumn(text, id) {
     input.min = 0;
     input.placeholder = "";
     input.classList.add("form-control");
-    input.id = `${id}-${app}`;
-    input.name = `${id}-${app}`;
-    input.tabIndex = `${applications.indexOf(app)}`;
+    input.id = `${metricKey}-${app}`;
+    input.name = `${metricKey}-${app}`;
+    input.tabIndex = `${selectedApps.indexOf(app)}`;
     input.placeholder = "";
   });
+
   tableEl.appendChild(tableRow);
 }
 
-function initializeTable() {
-  createTableHeaderRow();
+function updateTable() {
+  tableEl.innerHTML = '';
 
+  const selectedApps = Array.from(checkboxes)
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.value);
+
+  if (selectedApps.length === 0) {
+    return;
+  } else {
+  createTableHeaderRow(selectedApps);
   for (const key in metrics) {
-    const element = metrics[key];
-    renderTableColumn(element, key);
+    renderTableColumn(selectedApps, key);
+    }
   }
 }
 
-function gatherFormData() {
+function gatherFormData(selectedApps) {
   const formData = {};
 
-  applications.slice(1).forEach((app) => {
+  selectedApps.forEach((app) => {
     formData[app] = {};
 
     for (const key in metrics) {
@@ -93,12 +92,12 @@ function gatherFormData() {
       }
     }
   });
+
   return formData;
 }
 
 function createChart(data) {
-  const dataContainer = document.getElementById('data');
-
+  dataContainer.innerHTML = ''; 
   for (const softwareName in data) {
     const softwareData = data[softwareName];
     const canvasId = `${softwareName}-chart`;
@@ -141,12 +140,15 @@ function createChart(data) {
   }
 }
 
-window.addEventListener("load", initializeTable);
+
 
 document.getElementById("theForm").addEventListener("submit", function (e) {
   document.getElementById("data").innerHTML = "";
   e.preventDefault();
-  const formData = gatherFormData();
+  const selectedApps = Array.from(checkboxes)
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.value);
+  const formData = gatherFormData(selectedApps);
   console.log(formData);
   createChart(formData);
 });
@@ -172,6 +174,6 @@ document.getElementById("theForm").addEventListener("submit", function (e) {
     }
   });
 
-
-
-
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener('change', updateTable);
+});
