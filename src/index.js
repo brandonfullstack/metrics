@@ -15,16 +15,18 @@ const metrics = {
   voicemail: "Voicemails",
 };
 
-const tableDate = document.getElementById("date");
-const today = new Date();
-const dayOfWeek = today.getDay() - 1;
-const month = today.getMonth() + 1;
-const day = today.getDate();
-const year = today.getFullYear();
+function setDate() {
+  const tableDate = document.getElementById("date");
+  const today = new Date();
+  const dayOfWeek = today.getDay() - 1;
+  const month = today.getMonth() + 1;
+  const day = today.getDate();
+  const year = today.getFullYear();
 
-const dayOfWeekString = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  const dayOfWeekString = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-tableDate.innerHTML = `${dayOfWeekString[dayOfWeek]} ${month}/${day}/${year}`;
+  tableDate.innerHTML = `${dayOfWeekString[dayOfWeek]} ${month}/${day}/${year}`;
+}
 
 const tableEl = document.getElementById("apps");
 const checkboxes = document.querySelectorAll('input[name="applications"]');
@@ -152,7 +154,7 @@ function createChart(data) {
   }
 }
 
-
+window.addEventListener("load", setDate);
 
 document.getElementById("theForm").addEventListener("submit", function (e) {
   document.getElementById("data").innerHTML = "";
