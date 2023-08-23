@@ -3,20 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./css/styles.css";
 import Chart from '.././node_modules/chart.js';
 
-const applications = [
-  "",
-  "CAREWare",
-  "AIMS2.0",
-  "CTLS",
-  "HIVD2C",
-  "STARS",
-  "PCEligibilty",
-  "TOPWA",
-  "ELR",
-  "PCFMRS",
-  "MOVEit",
-];
-
 const metrics = {
   calls_made: "Calls Made",
   calls_received: "Calls Received",
@@ -34,15 +20,19 @@ const dataContainer = document.getElementById('data');
 
 function createTableHeaderRow(selectedApps) {
   const headerRow = document.createElement("tr");
-  
+  const emptyHeader = document.createElement("th");
+
+  headerRow.appendChild(emptyHeader); 
+
   for (const app of selectedApps) {
     const th = document.createElement("th");
     th.textContent = app;
     headerRow.appendChild(th);
   }
-  
+
   tableEl.appendChild(headerRow);
 }
+
 
 function renderTableColumn(selectedApps, metricKey) {
   const tableRow = document.createElement("tr");
@@ -78,7 +68,6 @@ function updateTable() {
     .map(checkbox => checkbox.value);
 
   createTableHeaderRow(selectedApps);
-
   
 
   for (const key in metrics) {
@@ -106,8 +95,7 @@ function gatherFormData(selectedApps) {
 }
 
 function createChart(data) {
-  dataContainer.innerHTML = ''; // Clear previous charts
-
+  dataContainer.innerHTML = ''; 
   for (const softwareName in data) {
     const softwareData = data[softwareName];
     const canvasId = `${softwareName}-chart`;
@@ -134,14 +122,7 @@ function createChart(data) {
   }
 }
 
-function initializeTable() {
-  createTableHeaderRow(applications.slice(1));
-  for (const key in metrics) {
-    renderTableColumn(applications.slice(1), key);
-  }
-}
 
-window.addEventListener("load", initializeTable);
 
 document.getElementById("theForm").addEventListener("submit", function(e) {
   e.preventDefault();
