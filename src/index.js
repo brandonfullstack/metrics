@@ -129,7 +129,9 @@ function createChart(data) {
           datasets: [
             {
               label: `${softwareName} Metrics`,
-              data: Object.values(softwareData)
+              data: Object.values(softwareData),
+              backgroundColor: `rgb(38, 219, 222)`
+                        
             }
           ]
         },
