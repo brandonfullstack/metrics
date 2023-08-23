@@ -157,12 +157,6 @@ document.getElementById("theForm").addEventListener("submit", function (e) {
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
 
-  nextBtn.addEventListener("click", function () {
-    initializeTable() 
-  });
-  prevBtn.addEventListener("click", function () {
-    initializeTable() 
-  })
 
   document.querySelector("form").addEventListener("click", function () {
 
