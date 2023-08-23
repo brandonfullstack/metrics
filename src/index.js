@@ -121,7 +121,7 @@ function createChart(data) {
           ]
         },
         options: {
-          aspectRatio: 6,
+          aspectRatio: 5,
           scales: {
             yAxes: [{
                 ticks: {
