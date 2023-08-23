@@ -66,7 +66,7 @@ function renderTableColumn(selectedApps, metricKey) {
     input.classList.add("form-control");
     input.id = `${metricKey}-${app}`;
     input.name = `${metricKey}-${app}`;
-    input.tabIndex = `${selectedApps.indexOf(app)}`;
+    input.tabIndex = `${selectedApps.indexOf(app)}` + 1;
   });
 
   tableEl.appendChild(tableRow);
