@@ -12,7 +12,7 @@ const metrics = {
   meetings: "Meetings",
   support_tickets_assigned: "Support Tickets Assigned",
   support_tickets_completed: "Support Tickets Completed",
-  voicemail: "Voicemail",
+  voicemail: "Voicemails",
 };
 
 const tableEl = document.getElementById("apps");
@@ -55,7 +55,6 @@ function renderTableColumn(selectedApps, metricKey) {
     input.id = `${metricKey}-${app}`;
     input.name = `${metricKey}-${app}`;
     input.tabIndex = `${selectedApps.indexOf(app)}`;
-    input.placeholder = "";
   });
 
   tableEl.appendChild(tableRow);
