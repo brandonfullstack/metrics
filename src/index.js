@@ -154,10 +154,6 @@ document.getElementById("theForm").addEventListener("submit", function (e) {
   createChart(formData);
 });
 
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-
-
   document.querySelector("form").addEventListener("click", function () {
 
     let firstButton = document.getElementById("1stButton");
