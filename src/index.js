@@ -15,6 +15,10 @@ const metrics = {
   voicemail: "Voicemails",
 };
 
+const tableEl = document.getElementById("apps");
+const checkboxes = document.querySelectorAll('input[name="applications"]');
+const dataContainer = document.getElementById('data');
+ 
 function setDate() {
   const tableDate = document.getElementById("date");
   const today = new Date();
@@ -28,9 +32,7 @@ function setDate() {
   tableDate.innerHTML = `${dayOfWeekString[dayOfWeek]} ${month}/${day}/${year}`;
 }
 
-const tableEl = document.getElementById("apps");
-const checkboxes = document.querySelectorAll('input[name="applications"]');
-const dataContainer = document.getElementById('data');
+
 
 function createTableHeaderRow(selectedApps) {
   const headerRow = document.createElement("tr");
