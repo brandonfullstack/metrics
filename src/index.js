@@ -34,11 +34,6 @@ const checkboxes = document.querySelectorAll('input[name="applications"]');
 
 function createTableHeaderRow() {
   const headerRow = document.createElement("tr");
-  for (const app of applications) {
-    const th = document.createElement("th");
-    th.textContent = app;
-    headerRow.appendChild(th);
-  }
   tableEl.appendChild(headerRow);
 }
 
@@ -74,10 +69,7 @@ function renderTableColumn(text, id) {
 function initializeTable() {
   createTableHeaderRow();
 
-  for (const key in metrics) {
-    const element = metrics[key];
-    renderTableColumn(element, key);
-  }
+ 
 }
 
 function gatherFormData() {
@@ -128,17 +120,17 @@ function createChart(data) {
 }
 
 function updateTable() {
-  
   tableEl.innerHTML = '';
 
-  createTableHeaderRow();
+  const selectedApps = Array.from(checkboxes)
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.value);
 
-  checkboxes.forEach((checkbox, index) => {
-    if (checkbox.checked) {
-      const appName = applications[index];
-      renderTableColumn(appName, index);
-    }
-  });
+  createTableHeaderRow(selectedApps);
+
+  for (const key in metrics) {
+    renderTableColumn(selectedApps, key);
+  }
 }
 
 window.addEventListener("load", initializeTable);
