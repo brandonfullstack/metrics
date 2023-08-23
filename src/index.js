@@ -67,11 +67,13 @@ function updateTable() {
     .filter(checkbox => checkbox.checked)
     .map(checkbox => checkbox.value);
 
+  if (selectedApps.length === 0) {
+    return;
+  } else {
   createTableHeaderRow(selectedApps);
-  
-
   for (const key in metrics) {
     renderTableColumn(selectedApps, key);
+    }
   }
 }
 
