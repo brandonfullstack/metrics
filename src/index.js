@@ -12,8 +12,19 @@ const metrics = {
   meetings: "Meetings",
   support_tickets_assigned: "Support Tickets Assigned",
   support_tickets_completed: "Support Tickets Completed",
-  voicemail: "Voicemail",
+  voicemail: "Voicemails",
 };
+
+const tableDate = document.getElementById("date");
+const today = new Date();
+const dayOfWeek = today.getDay() - 1;
+const month = today.getMonth() + 1;
+const day = today.getDate();
+const year = today.getFullYear();
+
+const dayOfWeekString = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+tableDate.innerHTML = `${dayOfWeekString[dayOfWeek]} ${month}/${day}/${year}`;
 
 const tableEl = document.getElementById("apps");
 const checkboxes = document.querySelectorAll('input[name="applications"]');
@@ -23,7 +34,7 @@ function createTableHeaderRow(selectedApps) {
   const headerRow = document.createElement("tr");
   const emptyHeader = document.createElement("th");
 
-  headerRow.appendChild(emptyHeader); 
+  headerRow.appendChild(emptyHeader);
 
   for (const app of selectedApps) {
     const th = document.createElement("th");
@@ -39,6 +50,7 @@ function renderTableColumn(selectedApps, metricKey) {
   const tableRow = document.createElement("tr");
   const metricCell = document.createElement("td");
   metricCell.textContent = metrics[metricKey];
+  metricCell.classList.add("text-end");
   tableRow.appendChild(metricCell);
 
   selectedApps.forEach((app) => {
@@ -55,7 +67,6 @@ function renderTableColumn(selectedApps, metricKey) {
     input.id = `${metricKey}-${app}`;
     input.name = `${metricKey}-${app}`;
     input.tabIndex = `${selectedApps.indexOf(app)}`;
-    input.placeholder = "";
   });
 
   tableEl.appendChild(tableRow);
@@ -71,9 +82,9 @@ function updateTable() {
   if (selectedApps.length === 0) {
     return;
   } else {
-  createTableHeaderRow(selectedApps);
-  for (const key in metrics) {
-    renderTableColumn(selectedApps, key);
+    createTableHeaderRow(selectedApps);
+    for (const key in metrics) {
+      renderTableColumn(selectedApps, key);
     }
   }
 }
@@ -98,7 +109,7 @@ function gatherFormData(selectedApps) {
 }
 
 function createChart(data) {
-  dataContainer.innerHTML = ''; 
+  dataContainer.innerHTML = '';
   for (const softwareName in data) {
     const softwareData = data[softwareName];
     const canvasId = `${softwareName}-chart`;
@@ -124,20 +135,20 @@ function createChart(data) {
           aspectRatio: 5,
           scales: {
             yAxes: [{
-                ticks: {
-                    beginAtZero: true,
-                    color: 'white'
-                }
+              ticks: {
+                beginAtZero: true,
+                color: 'white'
+              }
             }]
-        },
-        legend: {
-          labels: {
-            fontColor: 'white',
-            fontSize: 18
           },
-        }
-      },
-    });
+          legend: {
+            labels: {
+              fontColor: 'white',
+              fontSize: 18
+            },
+          }
+        },
+      });
   }
 }
 
@@ -156,16 +167,16 @@ document.getElementById("theForm").addEventListener("submit", function (e) {
 
 
 
-  document.querySelector("form").addEventListener("click", function () {
+document.querySelector("form").addEventListener("click", function () {
 
-    let firstButton = document.getElementById("1stButton");
-    let ariaExpanded = firstButton.getAttribute("aria-expanded");
+  let firstButton = document.getElementById("1stButton");
+  let ariaExpanded = firstButton.getAttribute("aria-expanded");
 
-    if ((ariaExpanded === "true")
-    ) {
-      firstButton.click()
-    }
-  });
+  if ((ariaExpanded === "true")
+  ) {
+    firstButton.click()
+  }
+});
 
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener('change', updateTable);
