@@ -88,20 +88,22 @@
     <button type="submit">Save</button>
     <button id="nextBtn" type="next">Next</button>
   </form>
-  <div class="accordion-flush" id="accordionFlushExample">
+  <div class="accordion-flush" id="accordionPanelsStayOpenExample2">
     <div class="accordion-item">
-      <h2 class="accordion-header" id="flush-headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-          Data Visualization
+      <h4 class="accordion-header" id="panelsStayOpen-headingTwo">
+        <button id="2ndButton" class="accordion-button" type="button" data-bs-toggle="collapse"
+          data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          Select application(s)
         </button>
-      </h2>
-      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-        data-bs-parent="#accordionFlushExample">
-        <div id ="data" class="accordion-body"><!--<img src="./../src/assets/images/stock-puppy-photo.jpg">--><canvas id="chart"></canvas>
+      </h4>
+      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show"
+        aria-labelledby="panelsStayOpen-headingOne">
+        <div id="data" class="accordion-body">
+          </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </body>
 
