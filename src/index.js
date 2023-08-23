@@ -2,6 +2,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./css/styles.css";
 import Chart from '.././node_modules/chart.js';
+Chart.defaults.global.defaultFontColor = 'white';
 
 const applications = [
   "",
