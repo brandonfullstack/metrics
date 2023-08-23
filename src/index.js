@@ -118,15 +118,32 @@ function createChart(data) {
               data: Object.values(softwareData)
             }
           ]
+        },
+        options: {
+          aspectRatio: 5,
+          scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    color: 'white'
+                }
+            }]
+        },
+        legend: {
+          labels: {
+            fontColor: 'white',
+            fontSize: 18
+          },
         }
-      }
-    );
+      },
+    });
   }
 }
 
 
 
-document.getElementById("theForm").addEventListener("submit", function(e) {
+document.getElementById("theForm").addEventListener("submit", function (e) {
+  document.getElementById("data").innerHTML = "";
   e.preventDefault();
   const selectedApps = Array.from(checkboxes)
     .filter(checkbox => checkbox.checked)
@@ -136,14 +153,26 @@ document.getElementById("theForm").addEventListener("submit", function(e) {
   createChart(formData);
 });
 
-document.querySelector("form").addEventListener("click", function() {
-  let firstButton = document.getElementById("1stButton");
-  let ariaExpanded = firstButton.getAttribute("aria-expanded");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
 
-  if (ariaExpanded === "true") {
-    firstButton.click();
-  }
-});
+  nextBtn.addEventListener("click", function () {
+    initializeTable() 
+  });
+  prevBtn.addEventListener("click", function () {
+    initializeTable() 
+  })
+
+  document.querySelector("form").addEventListener("click", function () {
+
+    let firstButton = document.getElementById("1stButton");
+    let ariaExpanded = firstButton.getAttribute("aria-expanded");
+
+    if ((ariaExpanded === "true")
+    ) {
+      firstButton.click()
+    }
+  });
 
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener('change', updateTable);
