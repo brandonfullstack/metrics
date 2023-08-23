@@ -38,11 +38,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* th.text-end {
-  text-align: right;
-} */
-
-
 .table{
   position: relative;
   margin: 0 auto;
@@ -53,10 +48,6 @@ td {
   padding-right: 20px;
   padding-bottom: 5px;
 }
-/* .borderless td,
-.borderless th {
-  border: none;
-} */
 
 .slide-in-blurred-top{-webkit-animation:slide-in-blurred-top .6s cubic-bezier(.23,1.000,.32,1.000) both;animation:slide-in-blurred-top .6s cubic-bezier(.23,1.000,.32,1.000) both}
 
