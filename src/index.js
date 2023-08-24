@@ -4,6 +4,9 @@ import "./css/styles.css";
 import Chart from '.././node_modules/chart.js';
 Chart.defaults.global.defaultFontColor = 'white';
 
+
+//Global Variables
+
 const metrics = {
   calls_made: "Calls Made",
   calls_received: "Calls Received",
@@ -15,20 +18,24 @@ const metrics = {
   voicemail: "Voicemails",
 };
 
-const tableDate = document.getElementById("date");
-const today = new Date();
-const dayOfWeek = today.getDay() - 1;
-const month = today.getMonth() + 1;
-const day = today.getDate();
-const year = today.getFullYear();
-
-const dayOfWeekString = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-
-tableDate.innerHTML = `${dayOfWeekString[dayOfWeek]} ${month}/${day}/${year}`;
-
 const tableEl = document.getElementById("apps");
 const checkboxes = document.querySelectorAll('input[name="applications"]');
 const dataContainer = document.getElementById('data');
+
+//UI Logic
+ 
+function setDate() {
+  const tableDate = document.getElementById("date");
+  const today = new Date();
+  const dayOfWeek = today.getDay() - 1;
+  const month = today.getMonth() + 1;
+  const day = today.getDate();
+  const year = today.getFullYear();
+
+  const dayOfWeekString = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+  tableDate.innerHTML = `${dayOfWeekString[dayOfWeek]} ${month}/${day}/${year}`;
+}
 
 function createTableHeaderRow(selectedApps) {
   const headerRow = document.createElement("tr");
@@ -89,25 +96,6 @@ function updateTable() {
   }
 }
 
-function gatherFormData(selectedApps) {
-  const formData = {};
-
-  selectedApps.forEach((app) => {
-    formData[app] = {};
-
-    for (const key in metrics) {
-      const inputId = `${key}-${app}`;
-      const inputElement = document.getElementById(inputId);
-      if (inputElement) {
-        const inputValue = parseInt(inputElement.value, 10);
-        formData[app][key] = inputValue;
-      }
-    }
-  });
-
-  return formData;
-}
-
 function createChart(data) {
   dataContainer.innerHTML = '';
   for (const softwareName in data) {
@@ -127,7 +115,9 @@ function createChart(data) {
           datasets: [
             {
               label: `${softwareName} Metrics`,
-              data: Object.values(softwareData)
+              data: Object.values(softwareData),
+              backgroundColor: `rgb(38, 219, 222)`
+                        
             }
           ]
         },
@@ -152,9 +142,33 @@ function createChart(data) {
   }
 }
 
+//Business Logic
 
+function gatherFormData(selectedApps) {
+  const formData = {};
+
+  selectedApps.forEach((app) => {
+    formData[app] = {};
+
+    for (const key in metrics) {
+      const inputId = `${key}-${app}`;
+      const inputElement = document.getElementById(inputId);
+      if (inputElement) {
+        const inputValue = parseInt(inputElement.value, 10);
+        formData[app][key] = inputValue;
+      }
+    }
+  });
+
+  return formData;
+}
+
+//Event Listeners
+
+window.addEventListener("load", setDate);
 
 document.getElementById("theForm").addEventListener("submit", function (e) {
+
   document.getElementById("data").innerHTML = "";
   e.preventDefault();
   const selectedApps = Array.from(checkboxes)
@@ -164,8 +178,6 @@ document.getElementById("theForm").addEventListener("submit", function (e) {
   console.log(formData);
   createChart(formData);
 });
-
-
 
 document.querySelector("form").addEventListener("click", function () {
 
