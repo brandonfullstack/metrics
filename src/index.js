@@ -195,3 +195,31 @@ checkboxes.forEach((checkbox) => {
 });
 
 
+let isDataSubmitted = false;
+
+document.getElementById("theForm").addEventListener("submit", function (e) {
+  isDataSubmitted = true;
+
+  e.preventDefault();
+
+  const selectedApps = Array.from(checkboxes)
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.value);
+  
+  const formData = gatherFormData(selectedApps); 
+  createChart(formData);
+});
+
+let dataButton = document.getElementById('2ndButton');
+
+dataButton.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  if(isDataSubmitted){
+    if (e.target.getAttribute('aria-expanded') === 'true') {
+      dataContainer.style.display = 'block';
+    }
+  }else{
+    alert("Please submit data first!");
+  }
+});
