@@ -174,10 +174,30 @@ document.querySelector("form").addEventListener("click", function () {
 
   if ((ariaExpanded === "true")
   ) {
-    firstButton.click()
+    firstButton.click();
   }
 });
 
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener('change', updateTable);
 });
+
+
+let dataButton = document.getElementById('2ndButton');
+
+dataButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (e.target.getAttribute('aria-expanded') === 'true') {
+        dataContainer.innerHTML = '';
+    } 
+    else{
+        const selectedApps = Array.from(checkboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.value);
+       
+        const formData = gatherFormData(selectedApps);
+
+        createChart(formData);
+    }
+});
+
