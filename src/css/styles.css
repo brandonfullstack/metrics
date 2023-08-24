@@ -62,9 +62,18 @@ h1 {
   background-color: black;
 }
 
-.table{
+.table {
   position: relative;
   margin: 0 auto;
+}
+
+.cenTable {
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .app-table,
